@@ -15,7 +15,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0'
+version = '1.16.1-1.0'
 group = 'ga.ozli.minecraftmods.variablespawnerhardness' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'variablespawnerhardness'
 
@@ -39,6 +39,8 @@ minecraft {
         client {
             workingDirectory project.file('run')
 
+            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
+
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
@@ -54,6 +56,8 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
+
+            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -117,8 +121,6 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
-    compile 'org.spongepowered:mixin:0.8-SNAPSHOT'
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
