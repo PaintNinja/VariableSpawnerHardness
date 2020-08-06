@@ -8,17 +8,14 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.storage.IWorldInfo;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractBlock.AbstractBlockState.class)
 public abstract class AbstractBlockStateMixin {
-
-    @Shadow
-    @Final
-    private float hardness;
 
     @Shadow
     public abstract Block getBlock();
@@ -26,29 +23,33 @@ public abstract class AbstractBlockStateMixin {
     /**
      * @reason Make block hardness variable for spawner blocks depending on world difficulty
      * @author Paint_Ninja
-     * todo: Change to insert at top rather than overwriting the whole thing
      */
-    @Overwrite
-    public float getBlockHardness(IBlockReader worldIn, BlockPos pos) {
+    @Inject(method = "getBlockHardness(Lnet/minecraft/world/IBlockReader;Lnet/minecraft/util/math/BlockPos;)F", at = @At("TAIL"), cancellable = true)
+    public void getBlockHardness(IBlockReader worldIn, BlockPos pos, CallbackInfoReturnable<Float> cir) {
         if (this.getBlock() == Blocks.SPAWNER && worldIn instanceof IWorld) {
             final IWorldInfo worldInfo = ((IWorld) worldIn).getWorld().getWorldInfo();
 
-            if (worldInfo.isHardcore())
-                return 50.0F; // same as obsidian
+            if (worldInfo.isHardcore()) {
+                cir.setReturnValue(50.0F); // same as obsidian
+                return;
+            }
 
             final Difficulty difficulty = worldInfo.getDifficulty();
 
             switch (difficulty) {
                 case HARD:
-                    return 30.0F; // same as ancient debris
+                    cir.setReturnValue(30.0F); // same as ancient debris
+                    break;
                 case NORMAL:
-                    return 22.5F; // same as enderchest
+                    cir.setReturnValue(22.5F); // same as enderchest
+                    break;
                 case EASY:
-                    return 9.0F; // same as end stone
+                    cir.setReturnValue(9.0F); // same as end stone
+                    break;
                 default: // PEACEFUL
-                    return 5.0F; // same as vanilla spawner
+                    cir.setReturnValue(5.0F); // same as vanilla spawner
+                    break;
             }
         }
-        return this.hardness;
     }
 }
