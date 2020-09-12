@@ -17,7 +17,7 @@ issueTrackerURL="https://github.com/PaintNinja/VariableSpawnerHardness" #optiona
 # The modid of the mod
 modId="variablespawnerhardness" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.16.2-1.2" #mandatory
+version="1.16.3-1.2" #mandatory
  # A display name for the mod
 displayName="Variable Spawner Hardness" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
@@ -58,6 +58,6 @@ Unlike some of the blocks mentioned above, you can still destroy a spawner with 
 [[dependencies.variablespawnerhardness]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.2]"
+    versionRange="[1.16.3]"
     ordering="NONE"
     side="BOTH"
