@@ -36,4 +36,3 @@ public abstract class AbstractBlockStateMixin {
         return worldInfo.isHardcore() ? 50F : hardnessByDifficulty[worldInfo.getDifficulty().ordinal()];
     }
 }
-
