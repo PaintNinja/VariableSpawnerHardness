@@ -23,16 +23,16 @@ public abstract class AbstractBlockStateMixin {
      * @reason Make block hardness variable for spawner blocks depending on world difficulty
      * @author Paint_Ninja
      */
-    @Inject(method = "getBlockHardness(Lnet/minecraft/world/IBlockReader;Lnet/minecraft/util/math/BlockPos;)F", at = @At("TAIL"), cancellable = true)
-    public void getBlockHardness(IBlockReader worldIn, BlockPos pos, CallbackInfoReturnable<Float> cir) {
+    @Inject(method = "getDestroySpeed(Lnet/minecraft/world/IBlockReader;Lnet/minecraft/util/math/BlockPos;)F", at = @At("TAIL"), cancellable = true)
+    public void getDestroySpeed(IBlockReader worldIn, BlockPos pos, CallbackInfoReturnable<Float> cir) {
         if (this.getBlock() == Blocks.SPAWNER && worldIn instanceof IWorld) {
-            cir.setReturnValue(onGetBlockHardness(worldIn));
+            cir.setReturnValue(onGetDestroySpeed(worldIn));
         }
     }
 
     private static final float[] hardnessByDifficulty = {5F, 9F, 22.5F, 30F};
-    private static float onGetBlockHardness(IBlockReader worldIn) {
-        final IWorldInfo worldInfo = ((IWorld) worldIn).getWorldInfo();
+    private static float onGetDestroySpeed(IBlockReader worldIn) {
+        final IWorldInfo worldInfo = ((IWorld) worldIn).getLevelData();
         return worldInfo.isHardcore() ? 50F : hardnessByDifficulty[worldInfo.getDifficulty().ordinal()];
     }
 }
