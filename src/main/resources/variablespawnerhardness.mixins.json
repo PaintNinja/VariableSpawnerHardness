@@ -2,7 +2,6 @@
   "package": "ga.ozli.minecraftmods.variablespawnerhardness.mixin",
   "required": true,
   "compatibilityLevel": "JAVA_8",
-  "refmap": "variablespawnerhardness.refmap.json",
   "mixins": [
     "AbstractBlockStateMixin"
   ],
