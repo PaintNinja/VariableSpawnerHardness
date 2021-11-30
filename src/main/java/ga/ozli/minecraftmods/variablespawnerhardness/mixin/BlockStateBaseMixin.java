@@ -1,5 +1,6 @@
 package ga.ozli.minecraftmods.variablespawnerhardness.mixin;
 
+import ga.ozli.minecraftmods.variablespawnerhardness.Config;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -30,9 +31,9 @@ public abstract class BlockStateBaseMixin {
         }
     }
 
-    private static final float[] hardnessByDifficulty = {5F, 9F, 22.5F, 30F};
+    private static final float[] hardnessByDifficulty = {Config.HARDNESS_PEACEFUL.get(), Config.HARDNESS_EASY.get(), Config.HARDNESS_NORMAL.get(), Config.HARDNESS_HARD.get()};
     private static float onGetDestroySpeed(BlockGetter worldIn) {
         final LevelData worldInfo = ((LevelAccessor) worldIn).getLevelData();
-        return worldInfo.isHardcore() ? 50F : hardnessByDifficulty[worldInfo.getDifficulty().ordinal()];
+        return worldInfo.isHardcore() ? Config.HARDNESS_HARDCORE.get() : hardnessByDifficulty[worldInfo.getDifficulty().ordinal()];
     }
 }
