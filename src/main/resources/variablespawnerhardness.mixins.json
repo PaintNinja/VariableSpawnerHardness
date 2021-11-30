@@ -1,13 +1,13 @@
 {
   "package": "ga.ozli.minecraftmods.variablespawnerhardness.mixin",
   "required": true,
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "refmap": "variablespawnerhardness.refmap.json",
   "mixins": [
-    "AbstractBlockStateMixin"
+    "BlockStateBaseMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
-  "minVersion": "0.8.1"
+  "minVersion": "0.8.2"
 }
