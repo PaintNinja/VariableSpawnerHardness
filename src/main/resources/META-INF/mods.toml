@@ -11,13 +11,13 @@ loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft versio
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
 license="MIT"
 # A URL to refer people to when problems occur with this mod
-issueTrackerURL="https://github.com/PaintNinja/VariableSpawnerHardness" #optional
+issueTrackerURL="https://github.com/PaintNinja/VariableSpawnerHardness/issues" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
 modId="variablespawnerhardness" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.18.2-1.2.2" #mandatory
+version="1.18.2-1.3.0" #mandatory
  # A display name for the mod
 displayName="Variable Spawner Hardness" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
@@ -33,13 +33,15 @@ authors="Paint_Ninja" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''Makes spawners take longer to destroy depending on your difficulty for a slight extra challenge.
 
-Spawner hardnesses
-------------------
+Default spawner hardnesses
+--------------------------
 Peaceful: Same hardness as vanilla (5F)
 Easy: Same as end stone (9F)
 Normal: Same as ender chests (22.5F)
 Hard: Same as ancient debris (30F)
 Hardcore: Same as obsidian (50F)
+
+The spawner hardnesses are configurable in the variablespawnerhardness-common.toml file.
 
 Unlike some of the blocks mentioned above, you can still destroy a spawner with any tool you want as long as you don't use your bare hands.'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
@@ -49,7 +51,7 @@ Unlike some of the blocks mentioned above, you can still destroy a spawner with 
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[40.0.12,)" #mandatory
+    versionRange="[40.1.0,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
