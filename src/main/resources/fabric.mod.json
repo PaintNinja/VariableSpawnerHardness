@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "variablespawnerhardness",
-  "version": "1.19-pre2-1.2.2",
+  "version": "1.19-pre3-1.2.2",
 
   "name": "Variable Spawner Hardness",
   "description": "Makes spawners take longer to destroy depending on your difficulty for a slight extra challenge.\n\nSpawner hardnesses\n------------------\nPeaceful: Same hardness as vanilla (5F)\nEasy: Same as end stone (9F)\nNormal: Same as ender chests (22.5F)\nHard: Same as ancient debris (30F)\nHardcore: Same as obsidian (50F)",
@@ -27,8 +27,8 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.13.3",
-    "minecraft": "1.19-beta.2",
+    "fabricloader": ">=0.14.6",
+    "minecraft": "1.19-beta.3",
     "java": ">=17"
   },
 
