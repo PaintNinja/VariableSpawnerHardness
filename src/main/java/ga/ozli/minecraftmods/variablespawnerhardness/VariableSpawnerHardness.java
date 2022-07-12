@@ -26,5 +26,6 @@ public final class VariableSpawnerHardness {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("VariableSpawnerHardness starting");
+        Config.load();
     }
 }

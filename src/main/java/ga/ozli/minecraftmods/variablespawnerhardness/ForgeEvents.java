@@ -12,7 +12,7 @@ class ForgeEvents {
     @SubscribeEvent
     public static void breakSpeed(final PlayerEvent.BreakSpeed event) {
         if (event.getState().getBlock() instanceof SpawnerBlock)
-            event.setNewSpeed(event.getOriginalSpeed() * (Config.peaceful.get().floatValue() / Config.hardnessByDifficulty[getDifficulty(event.getPlayer().level)]));
+            event.setNewSpeed(event.getOriginalSpeed() * (Config.peaceful.get().floatValue() / Config.hardnessByDifficulty[getDifficulty(event.getEntity().level)]));
     }
 
     private static int getDifficulty(final Level level) {

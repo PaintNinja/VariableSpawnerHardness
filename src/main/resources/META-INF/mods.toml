@@ -17,7 +17,7 @@ issueTrackerURL="https://github.com/PaintNinja/VariableSpawnerHardness/issues" #
 # The modid of the mod
 modId="variablespawnerhardness" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.19-1.3.0" #mandatory
+version="1.19-1.3.1" #mandatory
  # A display name for the mod
 displayName="Variable Spawner Hardness" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
@@ -51,7 +51,7 @@ Unlike some of the blocks mentioned above, you can still destroy a spawner with 
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[41.0.1,)" #mandatory
+    versionRange="[41.0.98,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER

@@ -23,7 +23,9 @@ class Config {
         builder.pop();
 
         configSpec = builder.build();
+    }
 
+    static void load() {
         hardnessByDifficulty = new float[] {
                 peaceful.get().floatValue(),
                 easy.get().floatValue(),
