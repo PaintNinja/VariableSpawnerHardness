@@ -2,8 +2,7 @@ package ga.ozli.minecraftmods.variablespawnerhardness;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
-class Config {
-
+final class Config {
     static ForgeConfigSpec configSpec;
 
     static ForgeConfigSpec.DoubleValue
