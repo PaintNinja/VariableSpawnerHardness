@@ -1,11 +1,12 @@
 plugins {
+    id 'java'
     id 'groovy'
     id 'eclipse'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.groovymc.modsdotgroovy' version '1.4.1'
 }
 
-version = '1.20-1.4.0'
+version = '1.20.2-1.4.1'
 group = 'ga.ozli.minecraftmods.variablespawnerhardness'
 base.archivesName = 'variablespawnerhardness'
 
@@ -13,7 +14,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'official', version: '1.20'
+    mappings channel: 'official', version: '1.20.2'
 
     runs {
         // applies to all run configs
@@ -39,8 +40,6 @@ minecraft {
     }
 }
 
-sourceSets.each { sourceSet -> file("src/${sourceSet.name}/java/").deleteDir() }
-
 repositories {
     maven {
         name = 'Modding Inquisition Releases'
@@ -50,16 +49,7 @@ repositories {
 
 dependencies {
     // Forge
-    minecraft 'net.minecraftforge:forge:1.20-46.0.14'
-
-    // GroovyModLoader
-    compileOnly 'org.groovymc.gml:gml:4.0.2'
-    runtimeOnly('org.groovymc.gml:gml:4.0.2:all') {
-        exclude module: 'transform'
-    }
-
-    // CommonGroovyLibrary (bundled with GML)
-    compileOnly 'org.groovymc.cgl:cgl-1.20-forge:0.3.7'
+    minecraft 'net.minecraftforge:forge:1.20.2-48.0.0'
 }
 
 tasks.named('jar', Jar) {
@@ -78,13 +68,6 @@ tasks.named('jar', Jar) {
     preserveFileTimestamps = false
 
     finalizedBy 'reobfJar'
-}
-
-tasks.withType(GroovyCompile).configureEach {
-    options.incremental = true
-    groovyOptions.encoding = 'UTF-8' // Use the UTF-8 charset for Groovy compilation
-    groovyOptions.optimizationOptions.indy = true
-    groovyOptions.optimizationOptions.groovydoc = true
 }
 
 tasks.withType(JavaCompile).configureEach {
