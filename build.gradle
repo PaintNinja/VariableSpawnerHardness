@@ -1,11 +1,9 @@
 plugins {
-	id 'fabric-loom' version '0.12-SNAPSHOT'
+	id 'java-library'
+	id 'fabric-loom' version '1.4.+'
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
-
-archivesBaseName = project.archives_base_name
+base.archivesName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
@@ -34,9 +32,11 @@ java {
 	// if it is present.
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
+
+	toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
-jar {
+tasks.named('jar', Jar) {
 	from("LICENSE") {
 		rename { "${it}_${project.archivesBaseName}" }
 	}
