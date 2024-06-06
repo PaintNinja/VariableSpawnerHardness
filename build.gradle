@@ -6,15 +6,17 @@ plugins {
     id 'org.groovymc.modsdotgroovy' version '1.4.3'
 }
 
-version = '1.20.4-1.4.1'
+version = '1.20.6-1.4.1'
 group = 'ga.ozli.minecraftmods.variablespawnerhardness'
 base.archivesName = 'variablespawnerhardness'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'official', version: '1.20.4'
+    mappings channel: 'official', version: '1.20.6'
+
+    reobf = false
 
     runs {
         // applies to all run configs
@@ -48,7 +50,8 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.4-49.0.14'
+    minecraft 'net.minecraftforge:forge:1.20.6-50.1.0'
+    implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
 }
 
 tasks.named('jar', Jar) {
@@ -65,8 +68,6 @@ tasks.named('jar', Jar) {
 
     reproducibleFileOrder = true
     preserveFileTimestamps = false
-
-    finalizedBy 'reobfJar'
 }
 
 tasks.withType(JavaCompile).configureEach {
