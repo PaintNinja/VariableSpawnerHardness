@@ -19,15 +19,13 @@ public final class VariableSpawnerHardness {
     public VariableSpawnerHardness() {
         // Register event listeners
         MinecraftForge.EVENT_BUS.register(ForgeEvents.class);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(VariableSpawnerHardness::onCommonSetup);
 
         // Setup and register the config
-        Config.init();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.configSpec);
     }
 
-    public void onCommonSetup(final FMLCommonSetupEvent event) {
+    public static void onCommonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("VariableSpawnerHardness starting");
-        Config.load();
     }
 }
