@@ -1,7 +1,7 @@
 plugins {
 	id 'java-library'
-	id 'fabric-loom' version '1.6.+'
-	id 'org.groovymc.modsdotgroovy' version '2.0.0-beta.22'
+	id 'fabric-loom' version '1.10.+'
+	id 'org.groovymc.modsdotgroovy' version '2.0.0-beta.32'
 }
 
 base.archivesName = project.archives_base_name
@@ -22,8 +22,5 @@ tasks.withType(JavaCompile).configureEach {
 java.toolchain.languageVersion = JavaLanguageVersion.of(project.java_version)
 
 modsDotGroovy.gather {
-	projectProperty 'loader_version'
-	projectProperty 'mod_version'
-	projectProperty 'mc_dep_version'
-	projectProperty 'java_version'
+	projectProperties(['loader_version', 'mod_version', 'mc_dep_version', 'java_version'])
 }
