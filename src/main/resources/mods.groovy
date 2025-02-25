@@ -8,7 +8,7 @@ ModsDotGroovy.make {
     mod {
         modId = 'variablespawnerhardness'
         displayName = 'Variable Spawner Hardness'
-        version = '1.21-1.4.2'
+        version = '1.21.4-1.4.2'
         author = 'Paint_Ninja'
 
         displayUrl = 'https://www.curseforge.com/minecraft/mc-mods/variable-spawner-hardness'
@@ -32,7 +32,7 @@ ModsDotGroovy.make {
         credits = 'Thanks to Commoble and IItemstack on the MMD discord for helping make this possible. Thanks to LexManos from the Forge team for helping make this work without any mixins by using more of the Forge API.'
 
         dependencies {
-            forge = '>=51.0.17'
+            forge = '>=54.1.0'
             minecraft = this.minecraftVersionRange
         }
     }
