@@ -2,6 +2,7 @@ plugins {
 	id 'java-library'
 	id 'fabric-loom' version '1.10.+'
 	id 'org.groovymc.modsdotgroovy' version '2.0.0-beta.32'
+	id 'com.modrinth.minotaur' version '2.+'
 }
 
 base.archivesName = project.archives_base_name
@@ -23,4 +24,16 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(project.java_version)
 
 modsDotGroovy.gather {
 	projectProperties(['loader_version', 'mod_version', 'mc_dep_version', 'java_version'])
+}
+
+// Run "gradlew modrinth" to build and publish directly to Modrinth
+modrinth {
+	token = System.getenv('MODRINTH_TOKEN')
+	projectId = 'variable-spawner-hardness'
+	versionName = "${project.mod_version}-fabric"
+	uploadFile = tasks.named('remapJar')
+}
+
+tasks.named('modrinth') {
+	dependsOn 'build'
 }
