@@ -1,8 +1,12 @@
+import groovy.transform.CompileStatic
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
 plugins {
 	id 'java-library'
 	id 'fabric-loom' version '1.10.+'
 	id 'org.groovymc.modsdotgroovy' version '2.0.0-beta.32'
 	id 'com.modrinth.minotaur' version '2.+'
+	id 'net.darkhax.curseforgegradle' version '1.1.26'
 }
 
 base.archivesName = project.archives_base_name
@@ -31,9 +35,45 @@ modrinth {
 	token = System.getenv('MODRINTH_TOKEN')
 	projectId = 'variable-spawner-hardness'
 	versionName = "${project.mod_version}-fabric"
+	versionType = getReleaseType(project.mc_dep_version)
 	uploadFile = tasks.named('remapJar')
 }
 
 tasks.named('modrinth') {
 	dependsOn 'build'
+}
+
+tasks.register('curseforge', TaskPublishCurseForge) {
+	dependsOn 'build'
+
+	apiToken = System.getenv('CURSEFORGE_TOKEN')
+	upload(400396, tasks.named('remapJar')).with {
+		displayName = "${project.property('mod_version')}-fabric"
+
+		addModLoader 'Fabric'
+
+		final String mcDepVersion = project.property('mc_dep_version')
+		final String releaseTypeStr = getReleaseType(mcDepVersion)
+		releaseType = releaseTypeStr
+
+		addGameVersion releaseTypeStr == 'release'
+				? mcDepVersion
+				: mcDepVersion.split('-', 2)[0] + '-Snapshot'
+	}
+}
+
+tasks.register('publishMod') {
+	dependsOn 'curseforge', 'modrinth'
+}
+
+@CompileStatic
+private static String getReleaseType(String mcDepVersion) {
+	Objects.requireNonNull(mcDepVersion, 'mcDepVersion cannot be null')
+	if (mcDepVersion.contains('-alpha')) {
+		return 'alpha'
+	} else if (mcDepVersion.contains('-beta') || mcDepVersion.contains('-rc')) {
+		return 'beta'
+	} else {
+		return 'release'
+	}
 }
