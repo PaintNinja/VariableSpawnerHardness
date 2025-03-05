@@ -30,7 +30,6 @@ modsDotGroovy.gather {
 	projectProperties(['loader_version', 'mod_version', 'mc_dep_version', 'java_version'])
 }
 
-// Run "gradlew modrinth" to build and publish directly to Modrinth
 modrinth {
 	token = System.getenv('MODRINTH_TOKEN')
 	projectId = 'variable-spawner-hardness'
