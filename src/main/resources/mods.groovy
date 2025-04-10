@@ -8,7 +8,7 @@ ModsDotGroovy.make {
     mod {
         modId = 'variablespawnerhardness'
         displayName = 'Variable Spawner Hardness'
-        version = '1.21.5-1.4.3'
+        version = '1.21.5-1.4.4'
         author = 'Paint_Ninja'
 
         displayUrl = 'https://www.curseforge.com/minecraft/mc-mods/variable-spawner-hardness'
