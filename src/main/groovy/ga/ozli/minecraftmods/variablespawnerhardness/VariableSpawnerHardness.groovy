@@ -18,11 +18,9 @@ final class VariableSpawnerHardness {
         forgeBus.register(ForgeEvents)
         modBus.onCommonSetup {
             log.info 'VariableSpawnerHardness starting'
-            Config.load()
         }
 
         // Setup and register the config
-        Config.init()
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.configSpec)
     }
 }
