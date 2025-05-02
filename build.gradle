@@ -58,7 +58,7 @@ tasks.register('curseforge', TaskPublishCurseForge) {
 
 		addGameVersion releaseTypeStr == 'release'
 				? mcDepVersion
-				: mcDepVersion.split('-', 2)[0] + '-Snapshot'
+				: mcDepVersion.split('-', 2)[0] + '-snapshot'
 	}
 }
 
