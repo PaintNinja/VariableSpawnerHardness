@@ -6,7 +6,7 @@ plugins {
     id 'org.groovymc.modsdotgroovy' version '1.4.3'
 }
 
-version = '1.20.6-1.4.2'
+version = '1.20.6-1.4.5'
 group = 'ga.ozli.minecraftmods.variablespawnerhardness'
 base.archivesName = 'variablespawnerhardness'
 
