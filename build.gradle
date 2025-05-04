@@ -50,8 +50,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.6-50.1.0'
-    implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
+    minecraft 'net.minecraftforge:forge:1.20.6-50.2.0'
 }
 
 tasks.named('jar', Jar) {
