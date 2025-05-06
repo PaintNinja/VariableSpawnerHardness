@@ -3,16 +3,20 @@ package ga.ozli.minecraftmods.variablespawnerhardness;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 final class Config {
-    static final ForgeConfigSpec configSpec;
+    private Config() {}
 
-    static final ForgeConfigSpec.DoubleValue
+    static final ForgeConfigSpec CONFIG_SPEC;
+
+    private static final ForgeConfigSpec.DoubleValue
             peaceful, easy, medium, hard, hardcore;
 
     private static final class LazyInit {
         private LazyInit() {}
 
+        private static final float PEACEFUL = peaceful.get().floatValue();
+
         private static final float[] HARDNESS_BY_DIFFICULTY = new float[] {
-                peaceful.get().floatValue(),
+                PEACEFUL,
                 easy.get().floatValue(),
                 medium.get().floatValue(),
                 hard.get().floatValue(),
@@ -31,7 +35,11 @@ final class Config {
             hardcore = builder.defineInRange("Hardcore", 50D, 5D, 50D);
         builder.pop();
 
-        configSpec = builder.build();
+        CONFIG_SPEC = builder.build();
+    }
+
+    static float getPeaceful() {
+        return LazyInit.PEACEFUL;
     }
 
     static float[] getHardnessByDifficulty() {
