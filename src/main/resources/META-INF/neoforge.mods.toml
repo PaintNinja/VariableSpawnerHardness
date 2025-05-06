@@ -1,0 +1,49 @@
+modLoader="javafml"
+loaderVersion="[2,)"
+license="MIT"
+
+[properties]
+"connector:placeholder"=true
+
+[[mods]]
+modId="variablespawnerhardness"
+version="1.21.1-1.4.2"
+displayName="Variable Spawner Hardness"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/variable-spawner-hardness"
+authors="Paint_Ninja"
+description='''
+Makes spawners take longer to destroy depending on your difficulty for a slight extra challenge.
+
+Default spawner hardnesses
+--------------------------
+Peaceful: Same hardness as vanilla (5F)
+Easy: Same as end stone (9F)
+Normal: Same as ender chests (22.5F)
+Hard: Same as ancient debris (30F)
+Hardcore: Same as obsidian (50F)
+
+The spawner hardnesses are configurable in the variablespawnerhardness-common.toml file.
+
+Unlike some of the blocks mentioned above, you can still destroy a spawner with any tool you want as long as you don't use your bare hands.
+'''
+
+[[dependencies.variablespawnerhardness]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.variablespawnerhardness]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.variablespawnerhardness]]
+modId="connector"
+type="required"
+versionRange="*"
+ordering="NONE"
+side="BOTH"
