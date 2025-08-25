@@ -67,7 +67,7 @@ tasks.register('publishMod') {
 }
 
 @CompileStatic
-private static String getReleaseType(String mcDepVersion) {
+private static String getReleaseType(final String mcDepVersion) {
 	Objects.requireNonNull(mcDepVersion, 'mcDepVersion cannot be null')
 	if (mcDepVersion.contains('-alpha')) {
 		return 'alpha'
