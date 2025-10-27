@@ -14,14 +14,10 @@ final class Config {
         private LazyInit() {}
 
         private static final float PEACEFUL = peaceful.get();
-
-        private static final float[] HARDNESS_BY_DIFFICULTY = new float[] {
-                PEACEFUL,
-                easy.get(),
-                medium.get(),
-                hard.get(),
-                hardcore.get()
-        };
+        private static final float EASY = easy.get();
+        private static final float MEDIUM = medium.get();
+        private static final float HARD = hard.get();
+        private static final float HARDCORE = hardcore.get();
     }
 
     static {
@@ -42,7 +38,14 @@ final class Config {
         return LazyInit.PEACEFUL;
     }
 
-    static float[] getHardnessByDifficulty() {
-        return LazyInit.HARDNESS_BY_DIFFICULTY;
+    static float getHardness(int difficulty) {
+        return switch (difficulty) {
+            case 0 -> LazyInit.PEACEFUL;
+            case 1 -> LazyInit.EASY;
+            case 2 -> LazyInit.MEDIUM;
+            case 3 -> LazyInit.HARD;
+            case 4 -> LazyInit.HARDCORE;
+            default -> throw new UnsupportedOperationException("Unknown difficulty: " + difficulty);
+        };
     }
 }
