@@ -6,7 +6,7 @@ plugins {
     id 'org.groovymc.modsdotgroovy' version '1.4.3'
 }
 
-version = '1.21.10-1.4.6'
+version = '1.21.11-1.4.6'
 group = 'ga.ozli.minecraftmods.variablespawnerhardness'
 base.archivesName = 'variablespawnerhardness'
 
@@ -14,7 +14,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'official', version: '1.21.10'
+    mappings channel: 'official', version: '1.21.11'
 
     reobf = false
 
@@ -51,14 +51,14 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.21.10-60.0.11'
+    minecraft 'net.minecraftforge:forge:1.21.11-61.0.8'
 
     // Forge 1.21.6+ uses EventBus 7, which shifts most of its runtime validation to compile-time via an annotation processor
     // to improve performance in production environments. This line is required to enable said compile-time validation
     // in your development environment, helping you catch issues early.
     // This relies on more obscure Java compiler APIs that may surface bugs. Update your JDK, report bugs to the OpenJDK
     // project and/or comment out this line if you encounter issues.
-    annotationProcessor 'net.minecraftforge:eventbus-validator:7.0-beta.12'
+    annotationProcessor 'net.minecraftforge:eventbus-validator:7.0.1'
 }
 
 tasks.named('jar', Jar) {

@@ -18,10 +18,4 @@ plugins {
 
 rootProject.name = 'VariableSpawnerHardness'
 
-buildCache {
-    remote(HttpBuildCache) {
-        url = 'https://gradlecache.groovymc.org/cache/'
-    }
-}
-
 enableFeaturePreview 'GROOVY_COMPILATION_AVOIDANCE'
