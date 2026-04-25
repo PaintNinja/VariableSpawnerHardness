@@ -2,9 +2,7 @@ package ga.ozli.minecraftmods.variablespawnerhardness;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
-final class Config {
-    private Config() {}
-
+public final class ForgeConfigImpl implements Config {
     static final ForgeConfigSpec CONFIG_SPEC;
 
     private static final ForgeConfigSpec.FloatValue
@@ -34,11 +32,13 @@ final class Config {
         CONFIG_SPEC = builder.build();
     }
 
-    static float getPeaceful() {
+    @Override
+    public float getPeaceful() {
         return LazyInit.PEACEFUL;
     }
 
-    static float getHardness(int difficulty) {
+    @Override
+    public float getHardness(int difficulty) {
         return switch (difficulty) {
             case 0 -> LazyInit.PEACEFUL;
             case 1 -> LazyInit.EASY;

@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "ga.ozli.minecraftmods.variablespawnerhardness.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"PlayerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

@@ -1,0 +1,47 @@
+plugins {
+    id 'java-library'
+}
+
+base.archivesName = "VariableSpawnerHardness-${project.name}"
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    withSourcesJar()
+    withJavadocJar()
+}
+
+repositories {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Sponge'
+                url = 'https://repo.spongepowered.org/repository/maven-public'
+            }
+        }
+        filter { includeGroupAndSubgroups('org.spongepowered') }
+    }
+}
+
+final String modVersion = version.toString()
+final String mcVer = minecraft_version
+final String forgeVer = forge_version
+final String fabricLoaderVer = fabric_loader_version
+final String neoVer = neo_version
+tasks.named('processResources', ProcessResources) {
+    final Map<String, String> props = [
+            version: modVersion,
+            minecraft_version: mcVer,
+            forge_version: forgeVer,
+            fabric_loader_version: fabricLoaderVer,
+            neo_version: neoVer
+    ]
+
+    inputs.properties(props)
+    it.filesMatching(['META-INF/mods.toml', 'fabric.mod.json', 'META-INF/neoforge.mods.toml']) {
+        expand(props)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
